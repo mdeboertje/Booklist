@@ -5,37 +5,45 @@
 {% block body %}
     <h1>Book index</h1>
 
-    <table class="table">
-        <thead class="">
-            <tr>
-                <th>Id</th>
-                <th>Isbn</th>
-                <th>Author</th>
-                <th>Title</th>
-                <th>Price</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for book in books %}
-            <tr>
-                <td>{{ book.id }}</td>
-                <td>{{ book.isbn }}</td>
-                <td>{{ book.author }}</td>
-                <td>{{ book.title }}</td>
-                <td>{{ book.price }}</td>
-                <td>
-                    <a href="{{ path('book_show', {'id': book.id}) }}">show</a>
-                    <a href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-xl">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Isbn</th>
+                    <th>Author</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.id }}</td>
+                        <td>{{ book.isbn }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.price }}</td>
+                        <td>
+                            <a class="btn btn-dark" href="{{ path('book_show', {'id': book.id}) }}">show</a>
+                            <a class="btn btn-info" href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <a href="{{ path('book_new') }}">Create new</a>
-{% endblock %}
+    <div class="row">
+    <div class="col-xl">
+        <a class="btn btn-info mb-5 mt-3 " href="{{ path('book_new') }}">Create new</a>
+    </div>
+
+    </div>{% endblock %}
