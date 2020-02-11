@@ -5,7 +5,11 @@
 {% block body %}
     <h1>Create new Review</h1>
 
+    {% if book_id is defined %}
+        <h3>{{ book_id.title }}</h3>
+    {% endif %}
+
     {{ include('review/_form.html.twig') }}
 
-    <a href="{{ path('review_index') }}">back to list</a>
+    <a class="btn btn-primary mt-3" href="{{ path('review_index') }}">back to list</a>
 {% endblock %}

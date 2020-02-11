@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Book;
 use App\Entity\Review;
 use App\Form\ReviewType;
+use App\Form\ReviewTypeWithCurrent;
 use App\Repository\ReviewRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,6 +24,7 @@ class ReviewController extends AbstractController
     {
         return $this->render('review/index.html.twig', [
             'reviews' => $reviewRepository->findAll(),
+
         ]);
     }
 
@@ -55,7 +57,8 @@ class ReviewController extends AbstractController
     {
         $review = new Review();
         $review->setBookId($book_id);
-        $form = $this->createForm(ReviewType::class, $review);
+        $form = $this->createForm(ReviewTypeWithCurrent::class, $review);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -69,6 +72,7 @@ class ReviewController extends AbstractController
         return $this->render('review/new.html.twig', [
             'review' => $review,
             'form' => $form->createView(),
+            'book_id' => $book_id
         ]);
     }
 
