@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Book{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+
+    <h2>{{ book.title }}</h2>
+    <table class="table table-striped">
+        <thead class="table-dark p-3">
+        <tr>
+            <th scope="row"></th>
+            <th scope="row"></th>
+
+
+        </tr>
+        </thead>
+        <tbody >
+
+        <tr>
+            <th>Title</th>
+            <td>{{ book.title }}</td>
+        </tr>
+
+        <tr>
+            <th>Author</th>
+            <td>{{ book.author }}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ book.price }}</td>
+        </tr>
+        <tr>
+            <th>Isbn</th>
+            <td>{{ book.isbn }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('book_index') }}">back to list</a>
+
+    <a href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
+        {{ include('book/_delete_form.html.twig') }}
+
+    </div>
+
+    {% for review in book.reviews  %}
+        <div class="card mt-3 border-top ml-3"  style="width: 36rem;">
+
+        <h5 class="card-header bg-primary text-light ">{{ review.name  }}</h5>
+        <h5 >{{ review.description}}</h5>
+        </div>
+
+    {% endfor %}
+
+
+
+{% endblock %}
