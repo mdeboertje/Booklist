@@ -21,9 +21,11 @@
                 </div>
                 <div class="card mt-3 border-top" style="width: 18rem;">
 
-                    <h5 class="card-header bg-primary text-light ">{{ book.reviews[0].name }}</h5>
+                    <h5 class="card-header bg-primary text-light ">{{ book.title}}</h5>
                     <div class="card-body">
-                    <h5 class="card-text bg-light ">{{ book.reviews[0].description }}</h5>
+
+                    <p class="card-text bg-light ">{{ book.reviews[0].description }}</p>
+                    <h5 class="card-text bg-light ">Posted by: {{ book.reviews[0].name }}</h5>
                     </div>
                 </div>
             </div>
