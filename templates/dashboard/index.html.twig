@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Hello DashboardController!{% endblock %}
+{% block title %}BookHub - Your private place ;){% endblock %}
 
 {% block body %}
     <div class="jumbotron bg-dark">
@@ -10,7 +10,7 @@
         {% for book in books %}
             <div class="col-xl">
                 <div class="card" style="width: 18rem;">
-                    <h3 class="card-title card-header bg-dark text-light">{{ book.title }}</h3>
+                    <h3 class="card-title card-header bg-dark text-light ">{{ book.title }}</h3>
                     <div class="card-body">
                         <h5 class="card-text">Author:{{ book.author }}</h5>
                         <h5 class="card-text">Price: ${{ book.price }},-</h5>
@@ -24,8 +24,15 @@
                         <h5 class="card-header bg-dark text-light ">{{ book.title }}</h5>
                         <div class="card-body">
 
-                            <p class="card-text bg-light ">{{ book.reviews[0].description }}</p>
-                            <h5 class="card-text bg-light ">Posted by: {{ book.reviews[0].name }}</h5>
+                            {% if book.reviews is empty %}
+                                <p class="card-text bg-light ">There is no review yet!</p>
+
+                                {% else %}
+                                    <p class="card-text bg-light ">{{ book.reviews[0].description }}</p>
+                                    <p class="card-text bg-light ">{{ book.reviews[0].name }}</p>
+
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>
